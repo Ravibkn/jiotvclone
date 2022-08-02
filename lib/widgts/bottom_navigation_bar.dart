@@ -35,9 +35,13 @@ class _NavigationBarsState extends State<NavigationBars> {
     ];
     return Scaffold(
       appBar: AppBar(
+        elevation: 0,
         title: Padding(
           padding: const EdgeInsets.only(left: 75.0),
-          child: Text("JioTV"),
+          child: Text(
+            "JioTV",
+            style: TextStyle(fontSize: 18),
+          ),
         ),
         backgroundColor: Color.fromARGB(255, 22, 22, 22),
       ),
