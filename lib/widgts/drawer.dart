@@ -11,20 +11,7 @@ class MyDrawer extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        // appBar: AppBar(
-        //   automaticallyImplyLeading: false,
-        //   backgroundColor: Colors.black,
-        //   title: Center(
-        //     child: Text(
-        //       "Menu",
-        //       style: TextStyle(
-        //           color: Colors.white,
-        //           fontSize: 17,
-        //           fontWeight: FontWeight.w700),
-        //     ),
-        //   ),
-        //   actions: [IconButton(onPressed: () {}, icon: Icon(Icons.close))],
-        // ),
+        
         body: Container(
           color: Colors.black,
           child: ListView(

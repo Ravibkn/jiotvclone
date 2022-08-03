@@ -1,9 +1,9 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, unused_field
 
+import 'package:card_swiper/card_swiper.dart';
 import 'package:flutter/material.dart';
-import 'package:jiotvclone/screens/movies.dart';
-import 'package:jiotvclone/screens/music.dart';
-import 'package:jiotvclone/widgts/drawer.dart';
+import 'package:jiotvclone/models/swiper_model.dart';
+import 'package:jiotvclone/models/tranding_models.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -14,6 +14,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   int selectedIndex = 0;
+  int _current = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -255,6 +256,125 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
               ],
+            ),
+          ),
+          SingleChildScrollView(
+            child: Padding(
+              padding: const EdgeInsets.only(top: 35.0),
+              child: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    Container(
+                      margin: EdgeInsets.only(left: 20, right: 20),
+                      height: 180,
+                      decoration: BoxDecoration(
+                        color: Colors.transparent,
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      child: Swiper(
+                        onIndexChanged: (index) {
+                          setState(() {
+                            _current = index;
+                          });
+                        },
+                        autoplay: true,
+                        layout: SwiperLayout.DEFAULT,
+                        itemCount: swipermodls.length,
+                        itemBuilder: (BuildContext context, index) {
+                          return Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(12),
+                              image: DecorationImage(
+                                  image: AssetImage(swipermodls[index].image),
+                                  fit: BoxFit.fitWidth),
+                            ),
+                          );
+                        },
+                        pagination: SwiperPagination(),
+                        // control: SwiperControl(),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 25,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 18.0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: const [
+                          Text(
+                            "Tranding TV Shows",
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold),
+                          ),
+                          Padding(
+                            padding: EdgeInsets.only(right: 18.0),
+                            child: Text(
+                              "SEE ALL",
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 10,
+                                  fontWeight: FontWeight.w700),
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Container(
+                      height: 150,
+                      padding: EdgeInsets.only(right: 16),
+                      child: ListView.builder(
+                          itemCount: travilmodls.length,
+                          scrollDirection: Axis.horizontal,
+                          itemBuilder: (context, index) {
+                            return Container(
+                              margin: EdgeInsets.only(right: 16),
+                              width: 130,
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Container(
+                                    height: 130,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(12),
+                                      image: DecorationImage(
+                                          image: AssetImage(
+                                              travilmodls[index].images),
+                                          fit: BoxFit.fill),
+                                    ),
+                                  )
+                                ],
+                              ),
+                            );
+                          }),
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: const [
+                        Text(
+                          "Comedy Corner",
+                          style: TextStyle(
+                              color: Colors.white, fontWeight: FontWeight.bold),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.only(right: 18.0),
+                          child: Text(
+                            "SEE ALL",
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 10,
+                                fontWeight: FontWeight.w700),
+                          ),
+                        )
+                      ],
+                    ),
+                  ],
+                ),
+              ),
             ),
           ),
         ],
